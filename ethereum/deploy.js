@@ -4,17 +4,16 @@ const compiledFactory = require("./build/CampaignFactory.json");
 
 const provider = new HDWalletProvider(
   //"REPLACE_WITH_YOUR_MNEMONIC",
-  "",
+  "xxx xxx",
   // remember to change this to your own phrase!
-  //"https://rinkeby.infura.io/v3/15c1d32581894b88a92d8d9e519e476c"
-  ""
+  "https://goerli.infura.io/v3/xxx"
   // remember to change this to your own endpoint!
 );
 const web3 = new Web3(provider);
 
 const deploy = async () => {
   const accounts = await web3.eth.getAccounts();
-  const defaultAccount = accounts[1];
+  const defaultAccount = accounts[0];
 
   console.log("Attempting to deploy from account", defaultAccount);
 

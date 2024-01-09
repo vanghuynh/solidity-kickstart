@@ -5,7 +5,16 @@ Campaign factory contract:
 Attempting to deploy from account 0xec1dd87F7517D971D859B40290FA8A544808a1D9
 Contract deployed to 0xe2321d75e0Ec448368dDFc0745533C14c288Cd8E
 
+Attempting to deploy from account 0xec1dd87F7517D971D859B40290FA8A544808a1D9
+Contract deployed to 0xC5cc50fdbB6e0A480433924028EF1d40e3923863
 
+"https://goerli.infura.io/v3/19e970920d9243d98a868b3dfa36df73"
+Attempting to deploy from account 0x100C6Fdb0DE9BB84Cd85C89277d04629D5dDf680
+Contract deployed to 0x41d2A5c2640EA47e95b0B74Ab009c8fDE44c7490
 
-
-
+https://app.infura.io/
+https://learnweb3.io/faucets/linea_goerli
+https://goerli.infura.io/v3/19e970920d9243d98a868b3dfa36df73
+huynhvang@192 kickstart % node ethereum/deploy.js
+Attempting to deploy from account 0x100C6Fdb0DE9BB84Cd85C89277d04629D5dDf680
+Contract deployed to 0x41d2A5c2640EA47e95b0B74Ab009c8fDE44c7490

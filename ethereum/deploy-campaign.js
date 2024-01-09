@@ -4,11 +4,11 @@ const compiledFactory = require("./build/CampaignFactory.json");
 
 let factory;
 
-const factoryAddress = "0x41d2A5c2640EA47e95b0B74Ab009c8fDE44c7490";
+const factoryAddress = "0x152A61cfa8b688bb93E0f89c816E5F44ffEeA7f2";
 
 const provider = new HDWalletProvider(
   //"REPLACE_WITH_YOUR_MNEMONIC",
-  "xxx xxx",
+  "xxx",
   // remember to change this to your own phrase!
   "https://goerli.infura.io/v3/xxx"
   // remember to change this to your own endpoint!
@@ -35,7 +35,7 @@ const deploy = async () => {
     //maxFeePerGas: "5000000",
     //maxPriorityFeePerGas: "3000000",
   });
-  campaignAddresses = await factory.methods.getDeployedCampaigns().call();
+  //campaignAddresses = await factory.methods.getDeployedCampaigns().call();
 
   console.log("campaignAddresses deployed: ", campaignAddresses);
   provider.engine.stop();

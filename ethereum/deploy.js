@@ -4,7 +4,7 @@ const compiledFactory = require("./build/CampaignFactory.json");
 
 const provider = new HDWalletProvider(
   //"REPLACE_WITH_YOUR_MNEMONIC",
-  "xxx xxx",
+  "xxx",
   // remember to change this to your own phrase!
   "https://goerli.infura.io/v3/xxx"
   // remember to change this to your own endpoint!

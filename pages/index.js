@@ -9,7 +9,6 @@ import { Link } from "../routes";
 class CampaignIndex extends Component {
   static async getInitialProps() {
     let campaigns = await factory.methods.getDeployedCampaigns().call();
-    campaigns = ["0xe2321d75e0Ec448368dDFc0745533C14c288Cd8E"];
     return { campaigns };
   }
 
@@ -32,7 +31,6 @@ class CampaignIndex extends Component {
     return (
       <Layout>
         <>
-          <h1>{this.props.campaigns.length}</h1>
           <h3>Open Campaign</h3>
           <Link route="/campaigns/new">
             <a>

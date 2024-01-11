@@ -35,7 +35,7 @@ const deploy = async () => {
     //maxFeePerGas: "5000000",
     //maxPriorityFeePerGas: "3000000",
   });
-  //campaignAddresses = await factory.methods.getDeployedCampaigns().call();
+  campaignAddresses = await factory.methods.getDeployedCampaigns().call();
 
   console.log("campaignAddresses deployed: ", campaignAddresses);
   provider.engine.stop();

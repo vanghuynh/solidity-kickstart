@@ -31,9 +31,6 @@ const deploy = async () => {
   await factory.methods.createCampaign("100").send({
     from: defaultAccount,
     gas: "3000000",
-    //gasPrice: "2000000",
-    //maxFeePerGas: "5000000",
-    //maxPriorityFeePerGas: "3000000",
   });
   campaignAddresses = await factory.methods.getDeployedCampaigns().call();
 

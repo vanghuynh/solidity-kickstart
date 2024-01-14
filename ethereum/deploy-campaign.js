@@ -4,7 +4,7 @@ const compiledFactory = require("./build/CampaignFactory.json");
 
 let factory;
 
-const factoryAddress = "0x152A61cfa8b688bb93E0f89c816E5F44ffEeA7f2";
+const factoryAddress = "0xaC461655B35681de9BB7dE8e1e7deaFF490c4D4d";
 
 const provider = new HDWalletProvider(
   //"REPLACE_WITH_YOUR_MNEMONIC",
@@ -20,21 +20,18 @@ const deploy = async () => {
 
   const defaultAccount = accounts[0];
 
-  factory = new web3.eth.Contract(
-    JSON.parse(compiledFactory.interface),
-    factoryAddress
-  );
+  factory = new web3.eth.Contract(compiledFactory.abi, factoryAddress);
 
   console.log("Attempting to deploy from account", defaultAccount);
   console.log("factory:", factory);
   console.log("factoryMethod:", factory.methods);
   await factory.methods.createCampaign("100").send({
     from: defaultAccount,
-    gas: "3000000",
+    gas: "1400000",
   });
   campaignAddresses = await factory.methods.getDeployedCampaigns().call();
 
-  console.log("campaignAddresses deployed: ", campaignAddresses);
+  console.log("campaignAddresses deployed: ", campaignAddresses[0]);
   provider.engine.stop();
 };
 deploy();

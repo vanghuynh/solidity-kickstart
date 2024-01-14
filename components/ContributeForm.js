@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Message } from "semantic-ui-react";
-import getCampaign from "../ethereum/campaign";
+import { Form, Input, Message, Button } from "semantic-ui-react";
+import Campaign from "../ethereum/campaign";
 import web3 from "../ethereum/web3";
 import { Router } from "../routes";
 
@@ -13,9 +13,11 @@ class ContributeForm extends Component {
 
   onSubmit = async (event) => {
     event.preventDefault();
+
+    const campaign = Campaign(this.props.address);
+
     this.setState({ loading: true, errorMessage: "" });
-    const campaign = getCampaign(this.props.address);
-    console.log("contribute address", this.props.address);
+
     try {
       const accounts = await web3.eth.getAccounts();
       await campaign.methods.contribute().send({
@@ -28,6 +30,7 @@ class ContributeForm extends Component {
     }
     this.setState({ loading: false, value: "" });
   };
+
   render() {
     return (
       <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
@@ -38,11 +41,11 @@ class ContributeForm extends Component {
             onChange={(event) => this.setState({ value: event.target.value })}
             label="ether"
             labelPosition="right"
-          ></Input>
+          />
         </Form.Field>
         <Message error header="Oops!" content={this.state.errorMessage} />
         <Button primary loading={this.state.loading}>
-          Contribute
+          Contribute!
         </Button>
       </Form>
     );

@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import Layout from "../../../components/Layout";
-import { Link } from "../../../routes";
 import { Button, Table } from "semantic-ui-react";
-import getCampaign from "../../../ethereum/campaign";
+import { Link } from "../../../routes";
+import Layout from "../../../components/Layout";
+import Campaign from "../../../ethereum/campaign";
 import RequestRow from "../../../components/RequestRow";
 
 class RequestIndex extends Component {
   static async getInitialProps(props) {
     const { address } = props.query;
-    const campaign = getCampaign(address);
+    const campaign = Campaign(address);
     const requestCount = await campaign.methods.getRequestsCount().call();
     const approversCount = await campaign.methods.approversCount().call();
+
     const requests = await Promise.all(
       Array(parseInt(requestCount))
         .fill()
@@ -18,8 +19,7 @@ class RequestIndex extends Component {
           return campaign.methods.requests(index).call();
         })
     );
-    console.log("requests", requests);
-    console.log("approversCount", approversCount);
+
     return { address, requests, requestCount, approversCount };
   }
 
@@ -27,10 +27,10 @@ class RequestIndex extends Component {
     return this.props.requests.map((request, index) => {
       return (
         <RequestRow
-          request={request}
           key={index}
-          address={this.props.address}
           id={index}
+          request={request}
+          address={this.props.address}
           approversCount={this.props.approversCount}
         />
       );
@@ -39,6 +39,7 @@ class RequestIndex extends Component {
 
   render() {
     const { Header, Row, HeaderCell, Body } = Table;
+
     return (
       <Layout>
         <h3>Requests</h3>
@@ -49,7 +50,6 @@ class RequestIndex extends Component {
             </Button>
           </a>
         </Link>
-
         <Table>
           <Header>
             <Row>
